@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.opensams.dal.StudentAssociationDao">
+
+    <sql id="basicColumn">
+        id, student_code, association_id, created_at, modified_at
+    </sql>
+
+    <resultMap id="basicMap" type="studentAssociation">
+        <result column="id" jdbcType="INTEGER" property="id" javaType="int"/>
+        <result column="student_code" jdbcType="VARCHAR" property="studentCode" javaType="string"/>
+        <result column="association_id" jdbcType="INTEGER" property="assoicationId" javaType="int"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" javaType="date"/>
+        <result column="modified_at" jdbcType="TIMESTAMP" property="modifiedAt" javaType="date"/>
+    </resultMap>
+
+    <insert id="insertStudentAssociation" parameterType="studentAssociation">
+        INSERT INTO student_association(student_code, association_id, created_at, modified_at)
+        VALUES(#{studentCode}, #{associationId}, #{createdAt}, #{modifiedAt})
+    </insert>
+
+</mapper>

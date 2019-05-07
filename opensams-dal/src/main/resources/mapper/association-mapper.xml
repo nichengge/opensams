@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.opensams.dal.AssociationDao">
+
+    <sql id="basicColumn">
+        id, name, founder, founder_code, type, avatar, spot,
+        description, created_at, modified_at
+    </sql>
+
+    <resultMap id="basicMap" type="association">
+        <result column="id" jdbcType="INTEGER" property="id" javaType="int"/>
+        <result column="name" jdbcType="VARCHAR" property="name" javaType="string"/>
+        <result column="founder" jdbcType="VARCHAR" property="founder" javaType="string"/>
+        <result column="founder_code" jdbcType="VARCHAR" property="founderCode" javaType="string"/>
+        <result column="type" jdbcType="VARCHAR" property="type" javaType="string"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar" javaType="string"/>
+        <result column="spot" jdbcType="VARCHAR" property="spot" javaType="string"/>
+        <result column="description" jdbcType="VARCHAR" property="description" javaType="string"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" javaType="date"/>
+        <result column="modified_at" jdbcType="TIMESTAMP" property="modifiedAt" javaType="date"/>
+    </resultMap>
+
+    <select id="queryAllAssociations" resultMap="basicMap">
+        SELECT
+        <include refid="basicColumn"/>
+        FROM association
+    </select>
+
+</mapper>

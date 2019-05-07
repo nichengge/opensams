@@ -1,0 +1,18 @@
+spring:
+  # 静态资源配置
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static/
+  # 数据源配置
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/opensams?useSSL=false&useUnicode=true&characterEncoding=utf8
+      username: root
+      password: mysql123456
+# mapper 配置
+mybatis:
+  mapper-locations: classpath:mapper/*-mapper.xml
+  type-aliases-package: com.opensams.dal.pojo
+

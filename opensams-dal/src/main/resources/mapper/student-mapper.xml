@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.opensams.dal.StudentDao">
+
+    <sql id="basicColumn">
+        id, student_name, student_code, birthday, sex, mail, phone, qq,
+        college, major, avatar, login_name, login_pwd, description, created_at,
+        modified_at
+    </sql>
+
+    <sql id="basicInsertColumn">
+        <trim suffixOverrides=",">
+            <if test="studentName != null">
+                student_name,
+            </if>
+            <if test="studentCode != null">
+                student_code,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="mail != null">
+                mail,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="qq != null">
+                qq,
+            </if>
+            <if test="college != null">
+                college,
+            </if>
+            <if test="major != null">
+                major,
+            </if>
+            <if test="avatar != null">
+                avatar,
+            </if>
+            <if test="loginName != null">
+                login_name,
+            </if>
+            <if test="loginPwd != null">
+                login_pwd,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="modifiedAt != null">
+                modified_at,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="basicInsertValue">
+        <trim suffixOverrides=",">
+            <if test="studentName != null">
+                #{studentName},
+            </if>
+            <if test="studentCode != null">
+                #{studentCode},
+            </if>
+            <if test="birthday != null">
+                #{birthday},
+            </if>
+            <if test="sex != null">
+                #{sex},
+            </if>
+            <if test="mail != null">
+                #{mail},
+            </if>
+            <if test="phone != null">
+                #{phone},
+            </if>
+            <if test="qq != null">
+                #{qq},
+            </if>
+            <if test="college != null">
+                #{college},
+            </if>
+            <if test="major != null">
+                #{major},
+            </if>
+            <if test="avatar != null">
+                #{avatar},
+            </if>
+            <if test="loginName != null">
+                #{loginName},
+            </if>
+            <if test="loginPwd != null">
+                #{loginPwd},
+            </if>
+            <if test="description != null">
+                #{description},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt},
+            </if>
+            <if test="modifiedAt != null">
+                #{modifiedAt},
+            </if>
+        </trim>
+    </sql>
+
+    <resultMap id="basicMap" type="student">
+        <result column="id" jdbcType="INTEGER" property="id" javaType="int"/>
+        <result column="student_name" jdbcType="VARCHAR" property="studentName" javaType="string"/>
+        <result column="student_code" jdbcType="VARCHAR" property="studentCode" javaType="string"/>
+        <result column="birthday" jdbcType="TIMESTAMP" property="birthday" javaType="date"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex" javaType="string"/>
+        <result column="mail" jdbcType="VARCHAR" property="mail" javaType="string"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone" javaType="string"/>
+        <result column="qq" jdbcType="VARCHAR" property="qq" javaType="string"/>
+        <result column="college" jdbcType="VARCHAR" property="college" javaType="string"/>
+        <result column="major" jdbcType="VARCHAR" property="major" javaType="string"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar" javaType="string"/>
+        <result column="login_name" jdbcType="VARCHAR" property="loginName" javaType="string"/>
+        <result column="login_pwd" jdbcType="VARCHAR" property="loginPwd" javaType="string"/>
+        <result column="description" jdbcType="VARCHAR" property="description" javaType="string"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" javaType="date"/>
+        <result column="modified_at" jdbcType="TIMESTAMP" property="modifiedAt" javaType="date"/>
+    </resultMap>
+
+    <select id="queryStudentByLoginName" resultType="student" resultMap="basicMap">
+        SELECT
+        <include refid="basicColumn"/>
+        FROM student
+        WHERE login_name = #{loginName}
+    </select>
+
+    <insert id="insertStudent" parameterType="student">
+        INSERT INTO student (student_name, student_code, birthday, sex, mail, phone, qq,
+        college, major, avatar, login_name, login_pwd, description, created_at,
+        modified_at)
+        VALUES (#{studentName}, #{studentCode}, #{birthday}, #{sex}, #{mail}, #{phone},
+        #{qq}, #{college}, #{major}, #{avatar}, #{loginName}, #{loginPwd}, #{description},
+        #{createdAt}, #{modifiedAt})
+    </insert>
+
+    <insert id="insertStudents" parameterType="java.util.List">
+        INSERT INTO student (student_name, student_code, birthday, sex, mail, phone, qq,
+        college, major, avatar, login_name, login_pwd, description, created_at,
+        modified_at)
+        VALUES
+        <foreach collection="list" item="s" separator=",">
+            <trim prefix="(" suffix=")">
+                #{s.studentName}, #{s.studentCode}, #{s.birthday}, #{s.sex}, #{s.mail},
+                #{s.phone}, #{s.qq}, #{s.college}, #{s.major}, #{s.avatar}, #{s.loginName},
+                #{s.loginPwd}, #{s.description}, #{s.createdAt}, #{s.modifiedAt}
+            </trim>
+        </foreach>
+    </insert>
+
+</mapper>
