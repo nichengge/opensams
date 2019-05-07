@@ -1,12 +1,12 @@
 package com.opensams.service.impl;
 
 import com.opensams.service.RegisterService;
-import com.opensams.service.model.dto.RegisterDto;
+import com.opensams.service.dto.RegisterDto;
 import com.opensams.service.utils.ModelConverter;
 import com.opensams.dal.StudentAssociationDao;
 import com.opensams.dal.StudentDao;
-import com.opensams.dal.pojo.Student;
-import com.opensams.dal.pojo.StudentAssociation;
+import com.opensams.dal.po.Student;
+import com.opensams.dal.po.StudentAssociation;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

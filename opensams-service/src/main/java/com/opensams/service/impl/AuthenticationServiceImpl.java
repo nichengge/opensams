@@ -1,7 +1,7 @@
 package com.opensams.service.impl;
 
 import com.opensams.dal.StudentDao;
-import com.opensams.dal.pojo.Student;
+import com.opensams.dal.po.Student;
 import com.opensams.service.AuthenticationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

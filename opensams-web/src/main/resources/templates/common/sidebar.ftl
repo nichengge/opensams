@@ -14,7 +14,7 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">主菜单</li>
                 <li>
-                    <a href="/"><i class="fa fa-dashboard dashboard-page"></i> <span>首页</span></a>
+                    <a href="javascript:" class="dashboard-page"><i class="fa fa-dashboard"></i> <span>首页</span></a>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -83,6 +83,20 @@
                     </ul>
                 </li>
                 <!-- /公告管理 -->
+                <!-- 资产管理 -->
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-table"></i> <span>资产管理</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="javascript:" class="asset-list"><i class="fa fa-circle-o"></i> 资产列表</a></li>
+                        <li><a href="javascript:" class="asset-apply"><i class="fa fa-circle-o"></i> 资产申请</a></li>
+                    </ul>
+                </li>
+                <!-- /资产管理 -->
                 <!-- 审批中心 -->
                 <li>
                     <a href="javascript:" class="approval-center"><i class="fa fa-dashboard"></i> <span>审批中心</span></a>

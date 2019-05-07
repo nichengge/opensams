@@ -1,7 +1,7 @@
 package com.opensams.controller.utils;
 
-import com.opensams.model.vo.request.RegisterRequest;
-import com.opensams.service.model.dto.RegisterDto;
+import com.opensams.vo.request.RegisterRequest;
+import com.opensams.service.dto.RegisterDto;
 
 /**
  * @author Kevin Leung

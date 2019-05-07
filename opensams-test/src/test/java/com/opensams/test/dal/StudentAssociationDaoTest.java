@@ -1,7 +1,7 @@
 package com.opensams.test.dal;
 
 import com.opensams.dal.StudentAssociationDao;
-import com.opensams.dal.pojo.StudentAssociation;
+import com.opensams.dal.po.StudentAssociation;
 import com.opensams.test.BasicTest;
 import org.junit.Test;
 

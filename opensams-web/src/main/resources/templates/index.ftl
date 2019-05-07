@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/static/bower_components/select2/dist/css/select2.min.css">
     <!-- daterange picker -->
     <link rel="stylesheet" href="/static/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- simplePagination -->
+    <link rel="stylesheet" href="/static/bower_components/simplePagination/simplePagination.css"/>
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <!-- iCheck -->
@@ -51,7 +53,6 @@
     <@sidebar></@sidebar>
 
     <div class="ajax-content">
-        <#include "content/dashboard.ftl">
     </div>
 
     <@footer></@footer>
@@ -78,6 +79,8 @@
 <script src="/static/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- Select2 -->
 <script src="/static/bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- simplePagination -->
+<script src="/static/bower_components/simplePagination/jquery.simplePagination.js"></script>
 <!-- iCheck -->
 <script src="/static/plugins/iCheck/icheck.min.js"></script>
 <!-- Bootstrap WYSIHTML5 -->

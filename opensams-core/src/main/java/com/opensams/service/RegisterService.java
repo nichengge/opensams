@@ -1,6 +1,6 @@
 package com.opensams.service;
 
-import com.opensams.service.model.dto.RegisterDto;
+import com.opensams.service.dto.RegisterDto;
 
 /**
  * @author Kevin Leung

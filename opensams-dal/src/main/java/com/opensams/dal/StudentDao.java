@@ -1,6 +1,6 @@
 package com.opensams.dal;
 
-import com.opensams.dal.pojo.Student;
+import com.opensams.dal.po.Student;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

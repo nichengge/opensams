@@ -1,6 +1,6 @@
 package com.opensams.dal;
 
-import com.opensams.dal.pojo.StudentAssociation;
+import com.opensams.dal.po.StudentAssociation;
 import org.springframework.stereotype.Repository;
 
 /**

@@ -1,6 +1,6 @@
 package com.opensams.service;
 
-import com.opensams.dal.pojo.Association;
+import com.opensams.dal.po.Association;
 
 import java.util.List;
 

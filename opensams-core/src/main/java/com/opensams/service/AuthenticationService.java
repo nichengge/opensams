@@ -1,6 +1,6 @@
 package com.opensams.service;
 
-import com.opensams.dal.pojo.Student;
+import com.opensams.dal.po.Student;
 
 /**
  * @author Kevin Leung

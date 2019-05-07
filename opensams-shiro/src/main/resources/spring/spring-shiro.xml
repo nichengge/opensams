@@ -36,19 +36,19 @@
 
     <bean class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 
-    <bean id="delegatingFilterProxy" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-        <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/login"/>
-        <property name="successUrl" value="/index"/>
-        <property name="unauthorizedUrl" value="/403"/>
-        <property name="filterChainDefinitionMap">
-            <map>
-                <entry key="/static/**" value="anon"/>
-                <entry key="/login" value="anon"/>
-                <entry key="/register" value="anon"/>
-                <entry key="/**" value="user"/>
-            </map>
-        </property>
-    </bean>
+    <!--<bean id="delegatingFilterProxy" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">-->
+        <!--<property name="securityManager" ref="securityManager"/>-->
+        <!--<property name="loginUrl" value="/login"/>-->
+        <!--<property name="successUrl" value="/index"/>-->
+        <!--<property name="unauthorizedUrl" value="/403"/>-->
+        <!--<property name="filterChainDefinitionMap">-->
+            <!--<map>-->
+                <!--<entry key="/static/**" value="anon"/>-->
+                <!--<entry key="/login" value="anon"/>-->
+                <!--<entry key="/register" value="anon"/>-->
+                <!--<entry key="/**" value="user"/>-->
+            <!--</map>-->
+        <!--</property>-->
+    <!--</bean>-->
 
 </beans>

@@ -3,6 +3,20 @@ $(document).ajaxStart(function () {
     Pace.restart()
 });
 
+$(function() {
+    loadIndex();
+});
+
+function loadIndex() {
+    loadPageContent('/dashboard', function () {
+        $('#notice-page').pagination({
+            items: 5,
+            prevText: '上一页',
+            nextText: '下一页'
+        });
+    });
+}
+
 function loadPageContent(url, callback) {
     $.ajax({
         url: url,
@@ -24,12 +38,12 @@ function loadPageContent(url, callback) {
 
 // 首页
 $('.dashboard-page').on('click', function () {
-    loadPageContent('/dashboard')
+    loadIndex();
 });
 
 // 成员列表
-$('.member-list').on('click', function() {
-    loadPageContent('/personnel/member-list', function() {
+$('.member-list').on('click', function () {
+    loadPageContent('/personnel/member-list', function () {
         $('#member-table').DataTable({
             ordering: false,
             autoRefresh: true
@@ -38,15 +52,15 @@ $('.member-list').on('click', function() {
 });
 
 // 成员注册
-$('.member-register').on('click', function() {
-    loadPageContent('/personnel/member-register', function() {
+$('.member-register').on('click', function () {
+    loadPageContent('/personnel/member-register', function () {
         $('.select2').select2();
     });
 });
 
 // 社团列表
-$('.association-list').on('click', function() {
-    loadPageContent('/association/association-list', function() {
+$('.association-list').on('click', function () {
+    loadPageContent('/association/association-list', function () {
         $('#association-table').DataTable({
             ordering: false
         });
@@ -54,26 +68,26 @@ $('.association-list').on('click', function() {
 });
 
 // 社团活动
-$('.association-activities').on('click', function() {
+$('.association-activities').on('click', function () {
     loadPageContent('/association/association-activities');
 });
 
 // 社团申请
-$('.association-apply').on('click', function() {
+$('.association-apply').on('click', function () {
     loadPageContent("/association/association-apply");
 });
 
 // 社团活动申请
-$('.activities-apply').on('click', function() {
-    loadPageContent('/association/activities-apply', function() {
+$('.activities-apply').on('click', function () {
+    loadPageContent('/association/activities-apply', function () {
         $('.select2').select2();
         $('#reservation').daterangepicker();
     });
 });
 
 // 收件箱
-$('.mail-inbox').on('click', function() {
-    loadPageContent('/mail/mail-inbox', function() {
+$('.mail-inbox').on('click', function () {
+    loadPageContent('/mail/mail-inbox', function () {
         $('.mailbox-messages input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_flat-blue',
             radioClass: 'iradio_flat-blue'
@@ -95,15 +109,15 @@ $('.mail-inbox').on('click', function() {
 });
 
 // 发送邮件
-$('.mail-compose').on('click', function() {
-    loadPageContent('mail/mail-compose', function() {
+$('.mail-compose').on('click', function () {
+    loadPageContent('mail/mail-compose', function () {
         $("#compose-textarea").wysihtml5();
     });
 });
 
 // 已发送
-$('.mail-sent').on('click', function() {
-    loadPageContent('mail/mail-sent', function() {
+$('.mail-sent').on('click', function () {
+    loadPageContent('mail/mail-sent', function () {
         $('.mailbox-messages input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_flat-blue',
             radioClass: 'iradio_flat-blue'
@@ -125,8 +139,8 @@ $('.mail-sent').on('click', function() {
 });
 
 // 草稿箱
-$('.mail-draft').on('click', function() {
-    loadPageContent('mail/mail-draft', function() {
+$('.mail-draft').on('click', function () {
+    loadPageContent('mail/mail-draft', function () {
         $('.mailbox-messages input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_flat-blue',
             radioClass: 'iradio_flat-blue'
@@ -148,8 +162,8 @@ $('.mail-draft').on('click', function() {
 });
 
 // 回收站
-$('.mail-trash').on('click', function() {
-    loadPageContent('mail/mail-trash', function() {
+$('.mail-trash').on('click', function () {
+    loadPageContent('mail/mail-trash', function () {
         $('.mailbox-messages input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_flat-blue',
             radioClass: 'iradio_flat-blue'
@@ -171,26 +185,42 @@ $('.mail-trash').on('click', function() {
 });
 
 // 阅读邮件
-$('.mail-read').on('click', function() {
+$('.mail-read').on('click', function () {
     loadPageContent('mail/mail-read');
 });
 
 // 公告列表
-$('.notice-list').on('click', function() {
+$('.notice-list').on('click', function () {
     loadPageContent('notice/notice-list');
 });
 
 // 公告推送
-$('.notice-publish').on('click', function() {
-    loadPageContent('notice/notice-publish', function() {
+$('.notice-publish').on('click', function () {
+    loadPageContent('notice/notice-publish', function () {
         $("#compose-textarea").wysihtml5();
         $('.select2').select2();
     });
 });
 
+$('.asset-list').on('click', function () {
+    loadPageContent('asset/asset-list', function () {
+        $('#asset-table').DataTable({
+            ordering: false
+        });
+    });
+});
+
+$('.asset-apply').on('click', function () {
+    loadPageContent('asset/asset-apply', function () {
+        $('#asset-table').DataTable({
+            ordering: false
+        });
+    });
+});
+
 // 审批中心
-$('.approval-center').on('click', function() {
-    loadPageContent('approval/approval-center', function() {
+$('.approval-center').on('click', function () {
+    loadPageContent('approval/approval-center', function () {
         $('.select2').select2();
 
         $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
@@ -203,8 +233,8 @@ $('.approval-center').on('click', function() {
 });
 
 // 个人信息
-$('.profile-page').on('click', function() {
-    loadPageContent('profile/profile', function() {
+$('.profile-page').on('click', function () {
+    loadPageContent('profile/profile', function () {
         $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
             checkboxClass: 'icheckbox_flat-blue',
             radioClass: 'iradio_flat-blue'

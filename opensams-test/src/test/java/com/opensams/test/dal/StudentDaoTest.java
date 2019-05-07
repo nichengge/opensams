@@ -2,7 +2,7 @@ package com.opensams.test.dal;
 
 import com.google.common.collect.Lists;
 import com.opensams.dal.StudentDao;
-import com.opensams.dal.pojo.Student;
+import com.opensams.dal.po.Student;
 import com.opensams.test.BasicTest;
 import org.junit.Test;
 

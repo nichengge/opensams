@@ -1,10 +1,10 @@
 package com.opensams.controller;
 
 import com.opensams.controller.utils.ModelConverter;
-import com.opensams.model.vo.request.RegisterRequest;
-import com.opensams.model.vo.response.BasicResponse;
+import com.opensams.vo.request.RegisterRequest;
+import com.opensams.vo.response.BasicResponse;
 import com.opensams.service.RegisterService;
-import com.opensams.service.model.dto.RegisterDto;
+import com.opensams.service.dto.RegisterDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

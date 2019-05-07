@@ -2,7 +2,7 @@ package com.opensams.test.dal;
 
 import com.google.common.collect.Lists;
 import com.opensams.dal.RoleDao;
-import com.opensams.dal.pojo.Role;
+import com.opensams.dal.po.Role;
 import com.opensams.test.BasicTest;
 import org.junit.Test;
 

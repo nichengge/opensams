@@ -1,7 +1,7 @@
 package com.opensams.service.utils;
 
-import com.opensams.dal.pojo.Student;
-import com.opensams.service.model.dto.RegisterDto;
+import com.opensams.dal.po.Student;
+import com.opensams.service.dto.RegisterDto;
 
 import java.util.Date;
 

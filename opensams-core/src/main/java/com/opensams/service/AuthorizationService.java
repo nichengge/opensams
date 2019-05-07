@@ -1,7 +1,7 @@
 package com.opensams.service;
 
-import com.opensams.dal.pojo.Permission;
-import com.opensams.dal.pojo.Role;
+import com.opensams.dal.po.Permission;
+import com.opensams.dal.po.Role;
 
 import java.util.List;
 

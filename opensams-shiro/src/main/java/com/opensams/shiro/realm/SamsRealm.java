@@ -1,8 +1,8 @@
 package com.opensams.shiro.realm;
 
-import com.opensams.dal.pojo.Permission;
-import com.opensams.dal.pojo.Role;
-import com.opensams.dal.pojo.Student;
+import com.opensams.dal.po.Permission;
+import com.opensams.dal.po.Role;
+import com.opensams.dal.po.Student;
 import com.opensams.service.AuthenticationService;
 import com.opensams.service.AuthorizationService;
 import org.apache.commons.collections4.CollectionUtils;

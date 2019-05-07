@@ -1,7 +1,7 @@
 package com.opensams.test.dal;
 
 import com.opensams.dal.StudentRoleDao;
-import com.opensams.dal.pojo.StudentRole;
+import com.opensams.dal.po.StudentRole;
 import com.opensams.test.BasicTest;
 import org.junit.Test;
 

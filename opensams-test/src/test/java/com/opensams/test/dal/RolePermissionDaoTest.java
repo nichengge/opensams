@@ -1,7 +1,7 @@
 package com.opensams.test.dal;
 
 import com.opensams.dal.RolePermissionDao;
-import com.opensams.dal.pojo.RolePermission;
+import com.opensams.dal.po.RolePermission;
 import com.opensams.test.BasicTest;
 import org.junit.Test;
 
