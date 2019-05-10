@@ -1,6 +1,5 @@
 package com.opensams.utils;
 
-import com.opensams.DateUtils;
 import com.opensams.model.dto.ActivityDto;
 import com.opensams.model.dto.NoticeDto;
 import com.opensams.model.dto.RegisterDto;

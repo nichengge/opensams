@@ -1,4 +1,4 @@
-package com.opensams;
+package com.opensams.utils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
