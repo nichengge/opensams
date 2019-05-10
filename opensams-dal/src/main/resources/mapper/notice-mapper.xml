@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.opensams.dal.NoticeDao">
+
+    <sql id="basicColumn">
+        id, title, content, publisher_code, created_at, modified_at
+    </sql>
+
+    <resultMap id="basicMap" type="notice">
+        <result column="id" jdbcType="INTEGER" property="id" javaType="int"/>
+        <result column="title" jdbcType="VARCHAR" property="title" javaType="string"/>
+        <result column="content" jdbcType="VARCHAR" property="content" javaType="string"/>
+        <result column="publisher_code" jdbcType="VARCHAR" property="publisherCode" javaType="string"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" javaType="date"/>
+        <result column="modified_at" jdbcType="TIMESTAMP" property="modifiedAt" javaType="date"/>
+    </resultMap>
+
+    <select id="queryNoticesPageAndOrderByExpireDate" resultMap="basicMap" parameterType="com.opensams.model.PageModel">
+        SELECT
+        <include refid="basicColumn"/>
+        FROM notice
+        ORDER BY created_at
+        LIMIT #{start}, #{offset}
+    </select>
+
+    <select id="countNotices" resultType="int">
+        SELECT count(*) FROM notice
+    </select>
+
+</mapper>
