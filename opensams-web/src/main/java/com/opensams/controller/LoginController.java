@@ -1,7 +1,7 @@
 package com.opensams.controller;
 
-import com.opensams.vo.response.BasicResponse;
-import com.opensams.vo.response.HttpCodeEnum;
+import com.opensams.model.vo.response.BasicResponse;
+import com.opensams.model.vo.response.HttpCodeEnum;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;

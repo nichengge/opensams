@@ -10,106 +10,6 @@
         modified_at
     </sql>
 
-    <sql id="basicInsertColumn">
-        <trim suffixOverrides=",">
-            <if test="studentName != null">
-                student_name,
-            </if>
-            <if test="studentCode != null">
-                student_code,
-            </if>
-            <if test="birthday != null">
-                birthday,
-            </if>
-            <if test="sex != null">
-                sex,
-            </if>
-            <if test="mail != null">
-                mail,
-            </if>
-            <if test="phone != null">
-                phone,
-            </if>
-            <if test="qq != null">
-                qq,
-            </if>
-            <if test="college != null">
-                college,
-            </if>
-            <if test="major != null">
-                major,
-            </if>
-            <if test="avatar != null">
-                avatar,
-            </if>
-            <if test="loginName != null">
-                login_name,
-            </if>
-            <if test="loginPwd != null">
-                login_pwd,
-            </if>
-            <if test="description != null">
-                description,
-            </if>
-            <if test="createdAt != null">
-                created_at,
-            </if>
-            <if test="modifiedAt != null">
-                modified_at,
-            </if>
-        </trim>
-    </sql>
-
-    <sql id="basicInsertValue">
-        <trim suffixOverrides=",">
-            <if test="studentName != null">
-                #{studentName},
-            </if>
-            <if test="studentCode != null">
-                #{studentCode},
-            </if>
-            <if test="birthday != null">
-                #{birthday},
-            </if>
-            <if test="sex != null">
-                #{sex},
-            </if>
-            <if test="mail != null">
-                #{mail},
-            </if>
-            <if test="phone != null">
-                #{phone},
-            </if>
-            <if test="qq != null">
-                #{qq},
-            </if>
-            <if test="college != null">
-                #{college},
-            </if>
-            <if test="major != null">
-                #{major},
-            </if>
-            <if test="avatar != null">
-                #{avatar},
-            </if>
-            <if test="loginName != null">
-                #{loginName},
-            </if>
-            <if test="loginPwd != null">
-                #{loginPwd},
-            </if>
-            <if test="description != null">
-                #{description},
-            </if>
-            <if test="createdAt != null">
-                #{createdAt},
-            </if>
-            <if test="modifiedAt != null">
-                #{modifiedAt},
-            </if>
-        </trim>
-    </sql>
-
     <resultMap id="basicMap" type="student">
         <result column="id" jdbcType="INTEGER" property="id" javaType="int"/>
         <result column="student_name" jdbcType="VARCHAR" property="studentName" javaType="string"/>
@@ -158,5 +58,15 @@
             </trim>
         </foreach>
     </insert>
+
+    <select id="queryStudentsByCodes" parameterType="list" resultMap="basicMap">
+        SELECT
+        <include refid="basicColumn"/>
+        FROM student
+        WHERE student_code IN
+        <foreach collection="list" item="studentCode" separator="," open="(" close=")">
+            #{studentCode}
+        </foreach>
+    </select>
 
 </mapper>

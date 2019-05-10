@@ -3,6 +3,8 @@ package com.opensams.dal;
 import com.opensams.dal.po.StudentAssociation;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author Kevin Leung
  */
@@ -15,5 +17,12 @@ public interface StudentAssociationDao {
      * @return 影响的行数
      */
     int insertStudentAssociation(StudentAssociation studentAssociation);
+
+    /**
+     * 批量通过学号查询社团id
+     * @param studentCodes 学号列表
+     * @return 社团Id列表
+     */
+    List<StudentAssociation> queryAssociationIdsByStudentCodes(List<String> studentCodes);
 
 }

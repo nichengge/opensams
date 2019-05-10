@@ -33,4 +33,11 @@ public interface StudentDao {
      */
     int insertStudents(List<Student> studentList);
 
+    /**
+     * 通过学号批量查询学生信息
+     * @param studentCodes 学号列表
+     * @return 学生列表
+     */
+    List<Student> queryStudentsByCodes(List<String> studentCodes);
+
 }

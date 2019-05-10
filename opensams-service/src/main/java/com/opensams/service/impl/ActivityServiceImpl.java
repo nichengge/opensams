@@ -4,7 +4,7 @@ import com.google.common.collect.Maps;
 import com.opensams.dal.ActivityDao;
 import com.opensams.dal.po.Activity;
 import com.opensams.service.ActivityService;
-import com.opensams.service.dto.ActivityDto;
+import com.opensams.model.dto.ActivityDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -29,10 +29,10 @@ public class ActivityServiceImpl implements ActivityService {
     public Map<String, List<ActivityDto>> showActivitiesInDashboard() {
         Activity activity = new Activity();
         activity.setStart(0);
-        activity.setOffset(10);
+        activity.setOffset(8);
         List<Activity> activities1 = activityDao.queryActivitiesPage(activity);
-        activity.setStart(10);
-        activity.setOffset(10);
+        activity.setStart(8);
+        activity.setOffset(8);
         List<Activity> activities2 = activityDao.queryActivitiesPage(activity);
 
         List<ActivityDto> activityDtos1 = activities1.stream()

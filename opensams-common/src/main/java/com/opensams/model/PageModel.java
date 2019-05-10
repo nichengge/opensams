@@ -9,6 +9,8 @@ public class PageModel {
 
     private int offset;
 
+    private int total;
+
     public int getStart() {
         return start;
     }
@@ -23,6 +25,14 @@ public class PageModel {
 
     public void setOffset(int offset) {
         this.offset = offset;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 }
 

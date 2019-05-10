@@ -14,4 +14,11 @@ public interface AssociationDao {
      */
     List<Association> queryAllAssociations();
 
+    /**
+     * 批量通过社团Id查询社团信息
+     * @param ids 社团Id列表
+     * @return 社团信息列表
+     */
+    List<Association> queryAssociationsByIds(List<Integer> ids);
+
 }

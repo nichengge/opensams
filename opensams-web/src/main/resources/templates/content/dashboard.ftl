@@ -24,7 +24,7 @@
                                 <ul>
                                     <#if activities1??>
                                         <#list activities1 as activity>
-                                            <li><a href="#">[${activity.association}]...${activity.name}...</a></li>
+                                            <li><a href="#">[${activity.association}] ${activity.name}</a></li>
                                         </#list>
                                     </#if>
                                 </ul>
@@ -33,7 +33,7 @@
                                 <ul>
                                     <#if activities2??>
                                         <#list activities2 as activity>
-                                            <li><a href="#">[${activity.association}]...${activity.name}...</a></li>
+                                            <li><a href="#">[${activity.association}] ${activity.name} </a></li>
                                         </#list>
                                     </#if>
                                 </ul>
@@ -62,30 +62,24 @@
                                         <div class="box-body">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p id="content">
+                                                    <p id="notice-content">
                                                         ${notice.content}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-2 pull-right">
-                                                    <p>
-                                                        <small><span id="publish-time">${notice.publishTime?date}</span> <span id="publisher">${notice.publisher}</span></small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-2 pull-right">
-                                                    <p>
-                                                        <small><span id="publishDept">${notice.publishDept}</span></small>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="box-footer">
                                             <div class="row">
-                                                <div class="col-md-2">
-                                                    <p>有效期至: <span id="expire">${notice.expireDate}</span></p>
+                                                <div class="col-md-6">
+                                                    <small>
+                                                        <span id="publisher">${notice.publisher}</span>
+                                                        <span id="publish-time">${notice.publishTime}</span>
+                                                    </small>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <small>
+                                                        <span id="publish-dept" class="pull-right">${notice.publishDept}</span>
+                                                    </small>
                                                 </div>
                                             </div>
                                         </div>

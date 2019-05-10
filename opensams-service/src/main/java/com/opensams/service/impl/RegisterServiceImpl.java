@@ -1,8 +1,8 @@
 package com.opensams.service.impl;
 
 import com.opensams.service.RegisterService;
-import com.opensams.service.dto.RegisterDto;
-import com.opensams.service.utils.ModelConverter;
+import com.opensams.model.dto.RegisterDto;
+import com.opensams.utils.ModelConverter;
 import com.opensams.dal.StudentAssociationDao;
 import com.opensams.dal.StudentDao;
 import com.opensams.dal.po.Student;

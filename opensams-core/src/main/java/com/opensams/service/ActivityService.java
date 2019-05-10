@@ -1,6 +1,6 @@
 package com.opensams.service;
 
-import com.opensams.service.dto.ActivityDto;
+import com.opensams.model.dto.ActivityDto;
 
 import java.util.List;
 import java.util.Map;

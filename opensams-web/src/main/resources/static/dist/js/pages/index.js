@@ -9,10 +9,45 @@ $(function() {
 
 function loadIndex() {
     loadPageContent('/dashboard', function () {
-        $('#notice-page').pagination({
-            items: 5,
-            prevText: '上一页',
-            nextText: '下一页'
+        $.ajax({
+            url: '/notice/count',
+            method: 'get',
+            dataType: 'json',
+            success: function(count) {
+                var items = 0;
+                if (count > 5) {
+                    items = 5;
+                } else {
+                    items = count;
+                }
+                $('#notice-page').pagination({
+                    items: items,
+                    prevText: '上一页',
+                    nextText: '下一页',
+                    onPageClick: function (pageNumber, event) {
+                        $.ajax({
+                            url: '/notice/dashboard?p='+(pageNumber-1),
+                            method: 'get',
+                            dataType: 'json',
+                            success: function (notice) {
+                                if (notice) {
+                                    var title = notice.title;
+                                    var content = notice.content;
+                                    var publishTime = notice.publishTime;
+                                    var publisher = notice.publisher;
+                                    var publishDept = notice.publishDept;
+
+                                    $('#notice-title').html(title);
+                                    $('#notice-content').html(content);
+                                    $('#publish-time').html(publishTime);
+                                    $('#publisher').html(publisher);
+                                    $('#publish-dept').html(publishDept);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
         });
     });
 }

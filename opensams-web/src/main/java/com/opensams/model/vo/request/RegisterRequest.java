@@ -1,4 +1,4 @@
-package com.opensams.vo.request;
+package com.opensams.model.vo.request;
 
 import lombok.Data;
 

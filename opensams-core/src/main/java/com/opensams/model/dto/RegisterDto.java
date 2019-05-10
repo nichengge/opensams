@@ -1,4 +1,4 @@
-package com.opensams.service.dto;
+package com.opensams.model.dto;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.opensams.vo.response;
+package com.opensams.model.vo.response;
 
 import java.util.List;
 

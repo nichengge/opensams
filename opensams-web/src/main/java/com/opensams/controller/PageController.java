@@ -1,12 +1,17 @@
 package com.opensams.controller;
 
 import com.opensams.dal.po.Association;
+import com.opensams.model.dto.ActivityDto;
+import com.opensams.model.dto.NoticeDto;
+import com.opensams.model.vo.ActivityVo;
+import com.opensams.model.vo.NoticeVo;
 import com.opensams.service.ActivityService;
 import com.opensams.service.AssociationService;
-import com.opensams.service.dto.ActivityDto;
-import com.opensams.vo.ActivityVo;
+import com.opensams.service.NoticeService;
+import com.opensams.utils.ModelConverter;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.beans.BeanUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,14 +29,20 @@ import java.util.stream.Collectors;
  */
 @Controller
 public class PageController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PageController.class);
 
     @Resource
     private AssociationService associationService;
+
     @Resource
     private ActivityService activityService;
 
+    @Resource
+    private NoticeService noticeService;
+
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String index() {
+        LOGGER.debug("class: {}, method: {}", "PageController", "index");
         return "index";
     }
 
@@ -46,7 +57,7 @@ public class PageController {
         if (CollectionUtils.isNotEmpty(activityDtos1)) {
             List<ActivityVo> activityVos1 = activityDtos1.stream()
                     .filter(Objects::nonNull)
-                    .map(this::convertToActivityVo)
+                    .map(ModelConverter::convertToActivityVo)
                     .collect(Collectors.toList());
 
             model.addAttribute("activities1", activityVos1);
@@ -55,20 +66,22 @@ public class PageController {
         if (CollectionUtils.isNotEmpty(activityDtos2)) {
             List<ActivityVo> activityVos2 = activityDtos2.stream()
                     .filter(Objects::nonNull)
-                    .map(this::convertToActivityVo)
+                    .map(ModelConverter::convertToActivityVo)
                     .collect(Collectors.toList());
 
             model.addAttribute("activities2", activityVos2);
         }
 
+        List<NoticeDto> noticeDtos = noticeService.queryNoticesPage(0, 1);
+
+        if (CollectionUtils.isNotEmpty(noticeDtos)) {
+            NoticeDto noticeDto = noticeDtos.get(0);
+            NoticeVo noticeVo = ModelConverter.convertToNoticeVo(noticeDto);
+
+            model.addAttribute("notice", noticeVo);
+        }
+
         return "content/dashboard";
-    }
-
-    private ActivityVo convertToActivityVo(ActivityDto activityDto) {
-        ActivityVo activityVo = new ActivityVo();
-        BeanUtils.copyProperties(activityDto, activityVo);
-
-        return activityVo;
     }
 
     @RequestMapping(value = "/{prefix}/{page}", method = RequestMethod.GET)
@@ -84,7 +97,9 @@ public class PageController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model) {
         List<Association> studentAssociations = associationService.showAllAssociations();
-        model.addAttribute("studentAssociations", studentAssociations);
+        if (CollectionUtils.isNotEmpty(studentAssociations)) {
+            model.addAttribute("studentAssociations", studentAssociations);
+        }
         return "register";
     }
 

@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.opensams.dal.StudentDao;
 import com.opensams.dal.po.Student;
 import com.opensams.test.BasicTest;
+import org.apache.commons.collections4.CollectionUtils;
 import org.junit.Test;
 
 import javax.annotation.Resource;
@@ -61,6 +62,14 @@ public class StudentDaoTest extends BasicTest {
         int affectedRows = studentDao.insertStudents(students);
 
         assert affectedRows == 2;
+    }
+
+    @Test
+    public void testQueryStudentsByCodes() {
+        List<String> studentCodes = Lists.newArrayList("20154124");
+        List<Student> students = studentDao.queryStudentsByCodes(studentCodes);
+
+        assert CollectionUtils.isNotEmpty(students);
     }
 
 }

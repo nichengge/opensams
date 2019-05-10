@@ -1,15 +1,12 @@
-package com.opensams.service.dto;
+package com.opensams.model.vo;
 
-import com.opensams.model.PageModel;
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * @author Kevin Leung
  */
 @Data
-public class ActivityDto extends PageModel {
+public class ActivityVo {
 
     private Integer id;
 
@@ -19,9 +16,9 @@ public class ActivityDto extends PageModel {
 
     private String association;
 
-    private Date startTime;
+    private String startTime;
 
-    private Date endTime;
+    private String endTime;
 
     private Integer number;
 
@@ -31,8 +28,8 @@ public class ActivityDto extends PageModel {
 
     private String description;
 
-    private Date createdAt;
+    private String createdAt;
 
-    private Date modifiedAt;
+    private String modifiedAt;
 
 }

@@ -28,4 +28,14 @@
         FROM association
     </select>
 
+    <select id="queryAssociationsByIds" parameterType="list" resultMap="basicMap">
+        SELECT
+        <include refid="basicColumn"/>
+        FROM association
+        WHERE id IN
+        <foreach collection="list" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+
 </mapper>
