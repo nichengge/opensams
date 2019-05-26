@@ -88,8 +88,6 @@
                                 </#if>
                             </div>
                         </div>
-                    </div>
-                    <div class="box-footer">
                         <#if notice??>
                             <div class="row">
                                 <div class="col-md-12">

@@ -1,14 +1,18 @@
 package com.opensams.controller;
 
-import com.opensams.dal.po.Association;
+import com.opensams.controller.utils.ModelConverter;
 import com.opensams.model.dto.ActivityDto;
+import com.opensams.model.dto.AssociationDto;
 import com.opensams.model.dto.NoticeDto;
+import com.opensams.model.dto.RoleDto;
 import com.opensams.model.vo.ActivityVo;
+import com.opensams.model.vo.AssociationVo;
 import com.opensams.model.vo.NoticeVo;
+import com.opensams.model.vo.RoleVo;
 import com.opensams.service.ActivityService;
 import com.opensams.service.AssociationService;
 import com.opensams.service.NoticeService;
-import com.opensams.utils.ModelConverter;
+import com.opensams.service.RoleService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +43,9 @@ public class PageController {
 
     @Resource
     private NoticeService noticeService;
+
+    @Resource
+    private RoleService roleService;
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String index() {
@@ -84,6 +91,31 @@ public class PageController {
         return "content/dashboard";
     }
 
+    @RequestMapping(value = "/personnel/member-register", method = RequestMethod.GET)
+    public String memberRegister(Model model) {
+        List<RoleDto> roleDtos = roleService.getAssociationRoles();
+
+        if (CollectionUtils.isNotEmpty(roleDtos)) {
+            List<RoleVo> roleVos = roleDtos.stream()
+                    .map(ModelConverter::convertToRoleVo)
+                    .collect(Collectors.toList());
+
+            model.addAttribute("roleList", roleVos);
+        }
+
+        List<AssociationDto> associationDtos = associationService.getAllAssociations();
+
+        if (CollectionUtils.isNotEmpty(associationDtos)) {
+            List<AssociationVo> associationVos = associationDtos.stream()
+                    .map(ModelConverter::convertToAssociationVo)
+                    .collect(Collectors.toList());
+
+            model.addAttribute("associations", associationVos);
+        }
+
+        return "content/personnel/member-register";
+    }
+
     @RequestMapping(value = "/{prefix}/{page}", method = RequestMethod.GET)
     public String pageContent(@PathVariable String prefix, @PathVariable String page) {
         return "content/" + prefix + "/" + page;
@@ -91,20 +123,26 @@ public class PageController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
+        LOGGER.debug("class: {}, method: {}", "PageController", "login");
         return "login";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model) {
-        List<Association> studentAssociations = associationService.showAllAssociations();
+        List<AssociationDto> studentAssociations = associationService.getAllAssociations();
         if (CollectionUtils.isNotEmpty(studentAssociations)) {
-            model.addAttribute("studentAssociations", studentAssociations);
+            List<AssociationVo> associationVos = studentAssociations.stream()
+                    .map(ModelConverter::convertToAssociationVo)
+                    .collect(Collectors.toList());
+
+            model.addAttribute("studentAssociations", associationVos);
         }
         return "register";
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String pageFor403() {
+        LOGGER.debug("class: {}, method: {}", "PageController", "pageFor403");
         return "error/403";
     }
 

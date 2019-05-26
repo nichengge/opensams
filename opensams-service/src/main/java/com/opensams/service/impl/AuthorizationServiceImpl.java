@@ -41,7 +41,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 
     @Override
     public List<Role> getRolesByStudentCode(String studentCode) {
-        List<StudentRole> studentRoleList = studentRoleDao.queryRoleCodesByStudentCode(studentCode);
+        List<StudentRole> studentRoleList = studentRoleDao.queryByStudentCode(studentCode);
 
         if (CollectionUtils.isEmpty(studentRoleList)) {
             LOGGER.debug("The user has no roles, studentCode: {}", studentCode);

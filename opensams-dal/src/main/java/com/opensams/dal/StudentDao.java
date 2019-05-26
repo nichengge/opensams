@@ -40,4 +40,25 @@ public interface StudentDao {
      */
     List<Student> queryStudentsByCodes(List<String> studentCodes);
 
+    /**
+     * 分页查询学生信息
+     * @param student {@link Student}
+     * @return 学生信息列表
+     */
+    List<Student> queryStudentsPage(Student student);
+
+    /**
+     * 通过学号查询学生信息
+     * @param studentCode 学号
+     * @return 学生信息
+     */
+    Student queryStudentByCode(@Param("studentCode") String studentCode);
+
+    /**
+     * 通过学号删除学生信息
+     * @param studentCode 学号
+     * @return 影响的行数
+     */
+    int deleteStudentByCode(@Param("studentCode") String studentCode);
+
 }

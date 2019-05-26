@@ -1,6 +1,6 @@
 package com.opensams.controller;
 
-import com.opensams.utils.ModelConverter;
+import com.opensams.controller.utils.ModelConverter;
 import com.opensams.model.vo.request.RegisterRequest;
 import com.opensams.model.vo.response.BasicResponse;
 import com.opensams.service.RegisterService;

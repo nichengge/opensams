@@ -61,7 +61,7 @@ public class NoticeServiceImpl implements NoticeService {
             return Lists.newArrayList();
         }
 
-        List<StudentAssociation> studentAssociations = studentAssociationDao.queryAssociationIdsByStudentCodes(publisherCodes);
+        List<StudentAssociation> studentAssociations = studentAssociationDao.queryByStudentCodes(publisherCodes);
 
         if (CollectionUtils.isEmpty(studentAssociations)) {
             return Lists.newArrayList();

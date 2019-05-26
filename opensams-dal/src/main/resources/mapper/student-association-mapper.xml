@@ -21,7 +21,7 @@
         VALUES(#{studentCode}, #{associationId}, #{createdAt}, #{modifiedAt})
     </insert>
 
-    <select id="queryAssociationIdsByStudentCodes" parameterType="list" resultMap="basicMap">
+    <select id="queryByStudentCodes" parameterType="list" resultMap="basicMap">
         SELECT
         <include refid="basicColumn"/>
         FROM student_association

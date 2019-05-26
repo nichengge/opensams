@@ -3,7 +3,7 @@ package com.opensams.controller;
 import com.opensams.model.dto.NoticeDto;
 import com.opensams.model.vo.NoticeVo;
 import com.opensams.service.NoticeService;
-import com.opensams.utils.ModelConverter;
+import com.opensams.controller.utils.ModelConverter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

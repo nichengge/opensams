@@ -1,5 +1,6 @@
 package com.opensams.dal.po;
 
+import com.opensams.model.PageModel;
 import lombok.Data;
 
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.Date;
  * @author Kevin Leung
  */
 @Data
-public class Student {
+public class Student extends PageModel {
 
     private Integer id;
 
@@ -21,6 +22,8 @@ public class Student {
     private String sex;
 
     private String mail;
+
+    private String localMail;
 
     private String phone;
 

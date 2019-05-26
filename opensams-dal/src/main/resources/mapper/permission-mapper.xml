@@ -16,7 +16,7 @@
         <result column="modified_at" jdbcType="TIMESTAMP" property="modifiedAt" javaType="date"/>
     </resultMap>
 
-    <select id="queryPermissionsByCodes" parameterType="list" resultType="permission" resultMap="basicMap">
+    <select id="queryPermissionsByCodes" parameterType="list" resultMap="basicMap">
         SELECT
         <include refid="basicColumn"/>
         FROM permission
@@ -25,6 +25,12 @@
                 OR permission_code = #{permissionCode}
             </foreach>
         </where>
+    </select>
+
+    <select id="queryAllPermissions" resultMap="basicMap">
+        SELECT
+        <include refid="basicColumn"/>
+        FROM permission
     </select>
 
 </mapper>

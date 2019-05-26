@@ -19,4 +19,10 @@ public interface RoleDao {
      */
     List<Role> queryRolesByCodes(@Param("roleCodes") List<String> roleCodes);
 
+    /**
+     * 查询所有角色信息
+     * @return 角色列表
+     */
+    List<Role> queryAllRoles();
+
 }

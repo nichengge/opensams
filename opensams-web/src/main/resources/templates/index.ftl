@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/static/bower_components/select2/dist/css/select2.min.css">
     <!-- daterange picker -->
     <link rel="stylesheet" href="/static/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- datepicker -->
+    <link rel="stylesheet" href="/static/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"/>
     <!-- simplePagination -->
     <link rel="stylesheet" href="/static/bower_components/simplePagination/simplePagination.css"/>
     <!-- bootstrap wysihtml5 - text editor -->
@@ -68,6 +70,8 @@
 <!-- date-range-picker -->
 <script src="/static/bower_components/moment/min/moment.min.js"></script>
 <script src="/static/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="/static/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- DataTables -->
 <script src="/static/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="/static/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -79,14 +83,16 @@
 <script src="/static/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- Select2 -->
 <script src="/static/bower_components/select2/dist/js/select2.full.min.js"></script>
-<!-- simplePagination -->
-<script src="/static/bower_components/simplePagination/jquery.simplePagination.js"></script>
+<!-- bootpag -->
+<script src="/static/bower_components/jquery-bootpag/lib/jquery.bootpag.min.js"></script>
 <!-- iCheck -->
 <script src="/static/plugins/iCheck/icheck.min.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/static/dist/js/adminlte.min.js"></script>
+<!-- student.js -->
+<script src="/static/dist/js/pages/student.js"></script>
 <!-- index.js -->
 <script src="/static/dist/js/pages/index.js"></script>
 </body>

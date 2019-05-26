@@ -13,10 +13,17 @@ import java.util.List;
 public interface StudentRoleDao {
 
     /**
-     * 查找某用户对应的角色号
+     * 查找某用户对应的角色关联关系
      * @param studentCode 用户编码
-     * @return 角色号列表
+     * @return 学生角色关联关系
      */
-    List<StudentRole> queryRoleCodesByStudentCode(@Param("studentCode") String studentCode);
+    List<StudentRole> queryByStudentCode(@Param("studentCode") String studentCode);
+
+    /**
+     * 批量通过学号查询学生角色关联关系信息
+     * @param studentCodes 学号列表
+     * @return 学生角色关联关系列表
+     */
+    List<StudentRole> queryByStudentCodes(List<String> studentCodes);
 
 }

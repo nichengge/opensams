@@ -72,4 +72,34 @@ public class StudentDaoTest extends BasicTest {
         assert CollectionUtils.isNotEmpty(students);
     }
 
+    @Test
+    public void testQueryStudentsPage() {
+        Student studentParam = new Student();
+        studentParam.setStart(0);
+        studentParam.setOffset(1);
+        List<Student> students = studentDao.queryStudentsPage(studentParam);
+
+        assert CollectionUtils.isNotEmpty(students);
+    }
+
+    @Test
+    public void testQueryStudentByCode() {
+        String code = "20154124";
+
+        Student student = studentDao.queryStudentByCode(code);
+
+        assert student != null;
+
+        System.out.println(student);
+    }
+
+    @Test
+    public void testDeleteStudentByCode() {
+        String code = "test01";
+
+        int affectedRows = studentDao.deleteStudentByCode(code);
+
+        assert affectedRows == 1;
+    }
+
 }

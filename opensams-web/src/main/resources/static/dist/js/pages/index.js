@@ -3,7 +3,24 @@ $(document).ajaxStart(function () {
     Pace.restart()
 });
 
-$(function() {
+var dataTableOptions = {
+    searching: false,
+    ordering: false,
+    paging: true,
+    pageLength: 10,
+    bAutoWidth: false,
+    processing: true,
+    dom: 'tpr',
+    language: {
+        paginate: {
+            next: '下一页',
+            previous: '上一页'
+        },
+        processing: '处理中...'
+    }
+}
+
+$(function () {
     loadIndex();
 });
 
@@ -13,39 +30,38 @@ function loadIndex() {
             url: '/notice/count',
             method: 'get',
             dataType: 'json',
-            success: function(count) {
+            success: function (count) {
                 var items = 0;
                 if (count > 5) {
                     items = 5;
                 } else {
                     items = count;
                 }
-                $('#notice-page').pagination({
-                    items: items,
-                    prevText: '上一页',
-                    nextText: '下一页',
-                    onPageClick: function (pageNumber, event) {
-                        $.ajax({
-                            url: '/notice/dashboard?p='+(pageNumber-1),
-                            method: 'get',
-                            dataType: 'json',
-                            success: function (notice) {
-                                if (notice) {
-                                    var title = notice.title;
-                                    var content = notice.content;
-                                    var publishTime = notice.publishTime;
-                                    var publisher = notice.publisher;
-                                    var publishDept = notice.publishDept;
+                $('#notice-page').bootpag({
+                    total: items,
+                    next: '下一条',
+                    prev: '上一条'
+                }).on('page', function (event, num) {
+                    $.ajax({
+                        url: '/notice/dashboard?p=' + (num - 1),
+                        method: 'get',
+                        dataType: 'json',
+                        success: function (notice) {
+                            if (notice) {
+                                var title = notice.title;
+                                var content = notice.content;
+                                var publishTime = notice.publishTime;
+                                var publisher = notice.publisher;
+                                var publishDept = notice.publishDept;
 
-                                    $('#notice-title').html(title);
-                                    $('#notice-content').html(content);
-                                    $('#publish-time').html(publishTime);
-                                    $('#publisher').html(publisher);
-                                    $('#publish-dept').html(publishDept);
-                                }
+                                $('#notice-title').html(title);
+                                $('#notice-content').html(content);
+                                $('#publish-time').html(publishTime);
+                                $('#publisher').html(publisher);
+                                $('#publish-dept').html(publishDept);
                             }
-                        });
-                    }
+                        }
+                    });
                 });
             }
         });
@@ -79,10 +95,7 @@ $('.dashboard-page').on('click', function () {
 // 成员列表
 $('.member-list').on('click', function () {
     loadPageContent('/personnel/member-list', function () {
-        $('#member-table').DataTable({
-            ordering: false,
-            autoRefresh: true
-        });
+        initStudentTable(dataTableOptions);
     });
 });
 
@@ -90,6 +103,12 @@ $('.member-list').on('click', function () {
 $('.member-register').on('click', function () {
     loadPageContent('/personnel/member-register', function () {
         $('.select2').select2();
+
+        $('#birthday').datepicker({
+            autoclose: true
+        });
+
+        bindSubmitEvent();
     });
 });
 

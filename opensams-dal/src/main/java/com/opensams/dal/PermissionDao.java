@@ -19,4 +19,10 @@ public interface PermissionDao {
      */
     List<Permission> queryPermissionsByCodes(@Param("permissionCodes") List<String> permissionCodes);
 
+    /**
+     * 查询所有权限信息
+     * @return 权限列表
+     */
+    List<Permission> queryAllPermissions();
+
 }

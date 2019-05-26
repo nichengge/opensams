@@ -23,6 +23,6 @@ public interface StudentAssociationDao {
      * @param studentCodes 学号列表
      * @return 社团Id列表
      */
-    List<StudentAssociation> queryAssociationIdsByStudentCodes(List<String> studentCodes);
+    List<StudentAssociation> queryByStudentCodes(List<String> studentCodes);
 
 }

@@ -27,4 +27,10 @@
         </where>
     </select>
 
+    <select id="queryAllRoles" resultMap="basicMap">
+        SELECT
+        <include refid="basicColum"/>
+        FROM role
+    </select>
+
 </mapper>

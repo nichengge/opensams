@@ -16,11 +16,21 @@
         <result column="modified_at" jdbcType="TIMESTAMP" property="modifiedAt" javaType="date"/>
     </resultMap>
 
-    <select id="queryRoleCodesByStudentCode" resultType="studentRole" resultMap="basicMap">
+    <select id="queryByStudentCode" resultMap="basicMap">
         SELECT
         <include refid="basicColumn"/>
         FROM student_role
         WHERE student_code = #{studentCode}
+    </select>
+
+    <select id="queryByStudentCodes" parameterType="list" resultMap="basicMap">
+        SELECT
+        <include refid="basicColumn"/>
+        FROM student_role
+        WHERE student_code IN
+        <foreach collection="list" item="studentCode" separator="," open="(" close=")">
+            #{studentCode}
+        </foreach>
     </select>
 
 </mapper>

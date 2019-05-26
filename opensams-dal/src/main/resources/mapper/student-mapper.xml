@@ -5,7 +5,7 @@
 <mapper namespace="com.opensams.dal.StudentDao">
 
     <sql id="basicColumn">
-        id, student_name, student_code, birthday, sex, mail, phone, qq,
+        id, student_name, student_code, birthday, sex, mail, local_mail, phone, qq,
         college, major, avatar, login_name, login_pwd, description, created_at,
         modified_at
     </sql>
@@ -17,6 +17,7 @@
         <result column="birthday" jdbcType="TIMESTAMP" property="birthday" javaType="date"/>
         <result column="sex" jdbcType="VARCHAR" property="sex" javaType="string"/>
         <result column="mail" jdbcType="VARCHAR" property="mail" javaType="string"/>
+        <result column="local_mail" jdbcType="VARCHAR" property="localMail" javaType="string"/>
         <result column="phone" jdbcType="VARCHAR" property="phone" javaType="string"/>
         <result column="qq" jdbcType="VARCHAR" property="qq" javaType="string"/>
         <result column="college" jdbcType="VARCHAR" property="college" javaType="string"/>
@@ -37,22 +38,22 @@
     </select>
 
     <insert id="insertStudent" parameterType="student">
-        INSERT INTO student (student_name, student_code, birthday, sex, mail, phone, qq,
+        INSERT INTO student (student_name, student_code, birthday, sex, mail, local_mail, phone, qq,
         college, major, avatar, login_name, login_pwd, description, created_at,
         modified_at)
-        VALUES (#{studentName}, #{studentCode}, #{birthday}, #{sex}, #{mail}, #{phone},
+        VALUES (#{studentName}, #{studentCode}, #{birthday}, #{sex}, #{mail}, #{localMail}, #{phone},
         #{qq}, #{college}, #{major}, #{avatar}, #{loginName}, #{loginPwd}, #{description},
         #{createdAt}, #{modifiedAt})
     </insert>
 
     <insert id="insertStudents" parameterType="java.util.List">
-        INSERT INTO student (student_name, student_code, birthday, sex, mail, phone, qq,
+        INSERT INTO student (student_name, student_code, birthday, sex, mail, local_mail, phone, qq,
         college, major, avatar, login_name, login_pwd, description, created_at,
         modified_at)
         VALUES
         <foreach collection="list" item="s" separator=",">
             <trim prefix="(" suffix=")">
-                #{s.studentName}, #{s.studentCode}, #{s.birthday}, #{s.sex}, #{s.mail},
+                #{s.studentName}, #{s.studentCode}, #{s.birthday}, #{s.sex}, #{s.mail}, #{s.localMail}
                 #{s.phone}, #{s.qq}, #{s.college}, #{s.major}, #{s.avatar}, #{s.loginName},
                 #{s.loginPwd}, #{s.description}, #{s.createdAt}, #{s.modifiedAt}
             </trim>
@@ -68,5 +69,76 @@
             #{studentCode}
         </foreach>
     </select>
+
+    <select id="queryStudentsPage" parameterType="student" resultMap="basicMap">
+        SELECT
+        <include refid="basicColumn"/>
+        FROM student
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="studentName != null">
+                AND student_name = #{studentName}
+            </if>
+            <if test="studentCode != null">
+                AND student_code = #{studentCode}
+            </if>
+            <if test="birthday != null">
+                AND birthday = #{birthday}
+            </if>
+            <if test="sex != null">
+                AND sex = #{sex}
+            </if>
+            <if test="mail != null">
+                AND mail = #{mail}
+            </if>
+            <if test="localMail != null">
+                AND local_mail = #{localMail}
+            </if>
+            <if test="phone != null">
+                AND phone = #{phone}
+            </if>
+            <if test="qq != null">
+                AND qq = #{qq}
+            </if>
+            <if test="college != null">
+                AND college = #{college}
+            </if>
+            <if test="major != null">
+                AND major = #{major}
+            </if>
+            <if test="avatar != null">
+                AND avatar = #{avatar}
+            </if>
+            <if test="loginName != null">
+                AND login_name = #{loginName}
+            </if>
+            <if test="loginPwd != null">
+                AND login_pwd = #{loginPwd}
+            </if>
+            <if test="createdAt != null">
+                AND created_at = #{createdAt}
+            </if>
+            <if test="modifiedAt != null">
+                AND modified_at = #{modifiedAt}
+            </if>
+        </where>
+        LIMIT #{start}, #{offset}
+    </select>
+
+    <select id="queryStudentByCode" resultMap="basicMap">
+        SELECT
+        <include refid="basicColumn"/>
+        FROM student
+        WHERE student_code = #{studentCode}
+    </select>
+
+    <delete id="deleteStudentByCode">
+        DELETE FROM student
+        WHERE student_code = #{studentCode}
+    </delete>
+
+
 
 </mapper>
